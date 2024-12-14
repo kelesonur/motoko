@@ -6,6 +6,8 @@ We built this project for the InternetComputerHackathon organized by IstanbulCha
 ## Need Analysis
 To decide on the project, we did a Needs analysis on Python. I extracted live Tweets from the 2023 Eartquake in Turkey, in which people requested certain needs. We also conducted an LDA or topic analysis on the Tweets and found that people have emergency needs in such disaster and dencentralized systems can be used to collect needs and donations.
 
+![wordcloud](https://github.com/user-attachments/assets/2b2b23b4-ed48-4ce6-957d-1704e31454fb)
+
 ## ADİİS Features
 - **Need Creation**: Users can create and post their needs during emergencies
 - **Aid Contribution**: Donors can contribute to specific needs
