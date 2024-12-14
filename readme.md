@@ -1,6 +1,7 @@
 # ADİİS (Acil Durum İletişim ve İnsani İhtiyaç Sistemi)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/QLg1fjdluqc" title="Project Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+[Watch the Project Video on YouTube](https://www.youtube.com/watch?v=QLg1fjdluqc)
+
 
 
 ## Overview
