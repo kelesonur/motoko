@@ -1,9 +1,12 @@
 # ADİİS (Acil Durum İletişim ve İnsani İhtiyaç Sistemi)
 
 ## Overview
-ADİİS is a decentralized platform built on the Internet Computer (ICP) blockchain that facilitates emergency communication and humanitarian aid coordination. The system connects those in need with those who want to help during emergencies and disasters, creating an efficient aid distribution network.
+We built this project for the InternetComputerHackathon organized by IstanbulChain and ICP HUB Turkey on Dec 13, 2025 together with Ömer Turan Bayraklı. ADİİS is a decentralized platform built on the Internet Computer (ICP) blockchain that facilitates emergency communication and humanitarian aid coordination. The system connects those in need with those who want to help during emergencies and disasters, creating an efficient aid distribution network.
 
-## Features
+## Need Analysis
+To decide on the project, we did a Needs analysis on Python. I extracted live Tweets from the 2023 Eartquake in Turkey, in which people requested certain needs. We also conducted an LDA or topic analysis on the Tweets and found that people have emergency needs in such disaster and dencentralized systems can be used to collect needs and donations.
+
+## ADİİS Features
 - **Need Creation**: Users can create and post their needs during emergencies
 - **Aid Contribution**: Donors can contribute to specific needs
 - **Real-time Tracking**: Track the status of needs and contributions
@@ -100,14 +103,10 @@ dfx deploy --network ic
 4. Push to the branch (git push origin feature/AmazingFeature)
 5. Open a Pull Request
 
-## License
-This project is licensed under the MIT License - see the LICENSE.md file for details
-
-## Contact
-- Project Website: [adiis.org](https://adiis.org)
-- GitHub: [Your GitHub Profile]
-
+## Project Contributors
+- Onur Keleş
+- Ömer Turan Bayraklı
+  
 ## Acknowledgments
-- Internet Computer Foundation
-- Motoko Programming Language Team
-- All contributors and supporters of the project
+- İstanbulChain Kulubü
+- ICP Hub Turkey
