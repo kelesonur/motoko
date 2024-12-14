@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "name": "local-support-frontend",
   "version": "0.1.0",
@@ -25,3 +26,29 @@
   "author": "",
   "license": "ISC"
 }
+=======
+{
+    "name": "local-support-frontend",
+    "version": "0.1.0",
+    "description": "Local Support - An IC app with Motoko and a simple JS frontend",
+    "scripts": {
+      "dfx:start": "dfx start --clean --background",
+      "dfx:stop": "dfx stop",
+      "dfx:build": "dfx build",
+      "dfx:deploy": "dfx deploy",
+      "start": "npm run dfx:start && npm run dfx:deploy",
+      "stop": "npm run dfx:stop"
+    },
+    "dependencies": {
+      "@dfinity/agent": "^0.15.0",
+      "@dfinity/candid": "^0.15.0",
+      "node-fetch": "^3.3.1" 
+    },
+    "type": "module",  
+    "devDependencies": {
+      "vite": "^4.3.9" 
+    },
+    "author": "",
+    "license": "ISC"
+}
+>>>>>>> 3ac8019b1a5a26bf7ec0ff86592e3c6ff92ac5e2

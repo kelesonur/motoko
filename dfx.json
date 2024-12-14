@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
     "version": 1,
     "networks": {
@@ -19,3 +20,23 @@
         }
     }
 }
+=======
+{
+    "version": 1,
+    "networks": {
+      "local": {
+        "bind": "127.0.0.1:8000",
+        "type": "ephemeral"
+      }
+    },
+    "canisters": {
+      "Main": {
+        "type": "motoko",
+        "local_support": "LocalSupport.mo",
+        "candid": "local_support.did",
+        "build": "dfx build local_support"
+      }
+    }
+  }
+  
+>>>>>>> 3ac8019b1a5a26bf7ec0ff86592e3c6ff92ac5e2
