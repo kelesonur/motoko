@@ -1,0 +1,19 @@
+type Need = record {
+    id : nat;
+    requestedBy : principal;
+    description : text;
+    fulfilled : bool;
+};
+
+type Contribution = record {
+    needId : nat;
+    donor : principal;
+    amount : nat;
+};
+
+service : {
+    createNeed : (text) -> (nat);
+    donateToNeed : (nat, nat) -> (bool);
+    getAllNeeds : () -> (vec Need) query;
+    getContributions : () -> (vec Contribution) query;
+}

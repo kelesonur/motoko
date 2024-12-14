@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acil Durum İletişim ve İnsani İhtiyaç Sistemi</title>
+    <style>
+      .header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          background-color: #fff;
+          border-radius: 8px;
+          box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      }
+      
+      .logo-title {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+      }
+      
+      .logo {
+          width: 200px;
+          height: auto;
+          object-fit: contain;
+      }
+      
+      .logo-title h1 {
+          margin: 0;
+          font-size: 1.8rem;
+          color: #006B3F;
+          font-weight: 600;
+          text-align: center;
+      }
+      
+      .project-description {
+          margin-top: 1.5rem;
+          max-width: 800px;
+          text-align: center;
+          color: #555;
+          line-height: 1.6;
+      }
+      
+      @media (max-width: 768px) {
+          .logo-title h1 {
+              font-size: 1.4rem;
+          }
+          
+          .logo {
+              width: 50px;
+          }
+          
+          .project-description {
+              font-size: 0.9rem;
+              padding: 0 1rem;
+          }
+      }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            margin: 2rem;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+        }
+        button {
+          padding: 0.75rem 1.5rem;
+          font-size: 1rem;
+          background-color: #006B3F;  
+          color: #fff;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+          transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+          background-color: #005732;  
+          transform: translateY(-1px);
+        }
+
+        button:active {
+          transform: translateY(1px);
+        }
+
+        button:focus {
+          outline: 2px solid #006B3F;
+          outline-offset: 2px;
+        }
+
+        .needs-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .need-item {
+            background-color: white;
+            border: 1px solid #e1e1e1;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .need-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .need-item h3 {
+            margin: 0 0 1rem 0;
+            color: #2c3e50;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .need-item div {
+            margin: 0.5rem 0;
+            line-height: 1.6;
+        }
+
+        .need-item strong {
+            color: #34495e;
+            font-weight: 600;
+        }
+
+        .status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .status.open {
+            background-color: #ebf5ff;
+            color: #2b6cb0;
+        }
+
+        .status.fulfilled {
+            background-color: #f0fff4;
+            color: #2f855a;
+        }
+
+        .results {
+            margin-top: 1rem;
+            background-color: #fafafa;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            max-height: 500px;
+            overflow-y: auto;
+            line-height: 1.5;
+        }
+
+        .loading {
+            color: #666;
+            font-style: italic;
+        }
+
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+            background-color: #fdf2f2;
+            border: 1px solid #feb2b2;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .button-row {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                margin: 1rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+  <div class="header">
+    <div class="logo-title">
+        <img src="assets/logo.png" alt="ADIIS Logo" class="logo">
+        <h1>Acil Durum İletişim ve İnsani İhtiyaç Sistemi (ADİİS)</h1>
+    </div>
+    <div class="project-description">
+      ADİİS, acil durumlarda toplumsal dayanışmayı güçlendirmek için tasarlanmış bir platformdur. Bu proje Istanbulchain kulübünün ICP Hub Türkiye ile gerçekleştirdiği IC Motoko Hackathon etkinliği için Onur Keleş ve Ömer Turan Bayraklı tarafından geliştirilmiştir. 
+      İlk olarak bir Python ile bir ihtiyaç analizi geliştirip 2023 Güney Doğu depremleri sırasında atılan Tweetler için bir LDA analizi gerçekleştirdik ve böyle bir sisteme ihtiyaç duyulduğunu tespit ettik. Sonra da bu projeyi yapmaya karar verdik. 
+      İhtiyaç analizimizin ve bu projenin kodlarına buradan ulaşabilirsiniz:  <a href="https://github.com/kelesonur/motoko/tree/main" target="_blank" class="project-link">https://github.com/kelesonur/motoko</a> 
+      Bu sistem, afet durumlarında ihtiyaç sahipleri ile yardım etmek isteyenleri bir araya getirerek, hızlı ve etkili bir yardımlaşma ağı oluşturur. Kullanıcılar, ihtiyaçlarını platform üzerinden paylaşabilir ve diğer kullanıcılar bu ihtiyaçlara katkıda bulunabilir. 
+      Amacımız, kriz anlarında toplumun tüm kesimlerini birleştirerek, dayanışmayı ve yardımlaşmayı kolaylaştırmaktır.
+  </div>
+</div>
+
+
+    <!-- Container for creating a new Need -->
+    <div class="container">
+        <h2>Yeni ihtiyaç tanımlayın</h2>
+        <div class="form-group">
+            <label for="needDescription">İhtiyaç ve adres tanımı</label>
+            <input type="text" id="needDescription" placeholder="örn. 200 adet çadır / defne sokak, hatay." />
+        </div>
+        <button id="createNeedBtn">İhtiyaç oluştur</button>
+        <div class="results" id="createNeedResult"></div>
+    </div>
+
+    <!-- Container for donating to a Need -->
+    <div class="container">
+        <h2>Bir ihtiyaca bağışta bulunun</h2>
+        <div class="form-group">
+            <label for="donateNeedId">İhtiyaç Numarası</label>
+            <input type="number" id="donateNeedId" placeholder="e.g. 0" />
+        </div>
+        <div class="form-group">
+            <label for="donateAmount">Bağış Miktarı</label>
+            <input type="number" id="donateAmount" placeholder="e.g. 50" />
+        </div>
+        <button id="donateBtn">Bağışla</button>
+        <div class="results" id="donationResult"></div>
+    </div>
+
+    <!-- Container for retrieving all Needs -->
+    <div class="container">
+        <h2>Bütün İhtiyaçlar</h2>
+        <div class="button-row">
+            <button id="getAllNeedsBtn">Bütün İhtiyaçları Listele</button>
+        </div>
+        <div class="results" id="allNeedsResult"></div>
+    </div>
+
+    <!-- Container for retrieving all Contributions -->
+    <div class="container">
+        <h2>Bütün Bağışlar</h2>
+        <div class="button-row">
+            <button id="getContributionsBtn">Bağışları Listele</button>
+        </div>
+        <div class="results" id="contributionsResult"></div>
+    </div>
+
+    <!-- Add polyfills first -->
+    <script type="module" src="/polyfills.js"></script>
+    
+    <!-- Then add your main script -->
+    <script type="module">
+        // Import the actor from the correct path
+        import actor from './index.js';
+
+        // Wait for the DOM to be fully loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            // UI Elements
+            const createNeedBtn = document.getElementById("createNeedBtn");
+            const createNeedResult = document.getElementById("createNeedResult");
+            const needDescription = document.getElementById("needDescription");
+
+            const donateBtn = document.getElementById("donateBtn");
+            const donationResult = document.getElementById("donationResult");
+            const donateNeedId = document.getElementById("donateNeedId");
+            const donateAmount = document.getElementById("donateAmount");
+
+            const getAllNeedsBtn = document.getElementById("getAllNeedsBtn");
+            const allNeedsResult = document.getElementById("allNeedsResult");
+
+            const getContributionsBtn = document.getElementById("getContributionsBtn");
+            const contributionsResult = document.getElementById("contributionsResult");
+
+            // Helper function to show loading state
+            function showLoading(element) {
+                element.className = "results loading";
+                element.textContent = "Loading...";
+            }
+
+            // Helper function to show error state
+            function showError(element, error) {
+                element.className = "results error";
+                element.textContent = `Error: ${error.message || error}`;
+                console.error('Error details:', error);
+            }
+
+            // Helper function to format principal ID
+            function formatPrincipal(arr) {
+                if (!arr) return 'Unknown';
+                const id = Array.from(arr).slice(0, 4).join('-');
+                return `User-${id}`;
+            }
+
+            // Create a new Need
+            createNeedBtn?.addEventListener("click", async () => {
+                const description = needDescription.value.trim();
+                if (!description) {
+                    createNeedResult.textContent = "Lütfen ihtiyacınızı ve adresinizi giriniz";
+                    return;
+                }
+
+                showLoading(createNeedResult);
+                try {
+                    const needId = await actor.createNeed(description);
+                    createNeedResult.className = "results";
+                    createNeedResult.innerHTML = `
+                        <div class="need-item">
+                            <h3>✨ Yeni İhtiyaç Tanımlandı</h3>
+                            <div><strong>İhtiyaç Numarası:</strong> ${needId}</div>
+                            <div><strong>İhtiyaç/Adres Tanımı:</strong> ${description}</div>
+                        </div>
+                    `;
+                    needDescription.value = "";
+                } catch (error) {
+                    console.error('İhtiyaç oluşturma başarısız:', error);
+                    showError(createNeedResult, error);
+                }
+            });
+
+            // Donate to a Need
+            donateBtn?.addEventListener("click", async () => {
+                const needId = parseInt(donateNeedId.value, 10);
+                const amount = parseInt(donateAmount.value, 10);
+                if (isNaN(needId) || isNaN(amount)) {
+                    donationResult.textContent = "Lütfen bir sayı giriniz.";
+                    return;
+                }
+
+                showLoading(donationResult);
+                try {
+                    const success = await actor.donateToNeed(needId, BigInt(amount));
+                    donationResult.className = "results";
+                    donationResult.innerHTML = `
+                        <div class="need-item">
+                            <h3>${success ? '✅ Bağış Başarılı' : '❌ Bağış Başarısız'}</h3>
+                            <div><strong>İhtiyaç Numarası:</strong> ${needId}</div>
+                            <div><strong>Miktar:</strong> ${amount}</div>
+                            ${!success ? '<div class="error">İhtiyaç bulunamadı veya bağış yapılamadı.</div>' : ''}
+                        </div>
+                    `;
+                    if (success) {
+                        donateNeedId.value = "";
+                        donateAmount.value = "";
+                    }
+                } catch (error) {
+                    console.error('Donation error:', error);
+                    showError(donationResult, error);
+                }
+            });
+
+            // Get All Needs
+            getAllNeedsBtn?.addEventListener("click", async () => {
+                showLoading(allNeedsResult);
+                try {
+                    const needs = await actor.getAllNeeds();
+                    allNeedsResult.className = "results";
+                    
+                    if (needs.length === 0) {
+                        allNeedsResult.innerHTML = `
+                            <div class="need-item">
+                                <h3>İhtiyaç bulunamadı.</h3>
+                                <div>Başlamak için ihtiyacınızı ve adresinizi yazın.</div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    const formattedNeeds = needs.map(need => {
+                        const statusClass = need.fulfilled ? 'fulfilled' : 'open';
+                        const statusText = need.fulfilled ? '✅ Fulfilled' : '⏳ Open';
+                        return `
+                            <div class="need-item">
+                                <h3>
+                                    İhtiyaç #${need.id}
+                                    <span class="status ${statusClass}">${statusText}</span>
+                                </h3>
+                                <div><strong>İhtiyaç/Adres Tanımı:</strong> ${need.description}</div>
+                                <div><strong>İhtiyaç Sahibi:</strong> ${formatPrincipal(need.requestedBy?._arr)}</div>
+                            </div>
+                        `;
+                    }).join('');
+
+                    allNeedsResult.innerHTML = `
+                        <div class="needs-container">
+                            ${formattedNeeds}
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error('Get needs error:', error);
+                    showError(allNeedsResult, error);
+                }
+            });
+
+            // Get All Contributions
+            getContributionsBtn?.addEventListener("click", async () => {
+                showLoading(contributionsResult);
+                try {
+                    const contributions = await actor.getContributions();
+                    contributionsResult.className = "results";
+                    
+                    if (contributions.length === 0) {
+                        contributionsResult.innerHTML = `
+                            <div class="need-item">
+                                <h3>Bağış bulunamadı.</h3>
+                                <div>Başlamak için bir bağış yapınız.</div>
+                            </div>
+                        `;
+                        return;
+                    }
+
+                    const formattedContributions = contributions.map(contribution => `
+                        <div class="need-item">
+                            <h3>💰 Bağış #${contribution.needId}</h3>
+                            <div><strong>Miktar:</strong> ${contribution.amount.toString()}</div>
+                            <div><strong>Bağışta Bulunan:</strong> ${formatPrincipal(contribution.donor?._arr)}</div>
+                        </div>
+                    `).join('');
+
+                    contributionsResult.innerHTML = `
+                        <div class="needs-container">
+                            ${formattedContributions}
+                        </div>
+                    `;
+                } catch (error) {
+                    console.error('Get contributions error:', error);
+                    showError(contributionsResult, error);
+                }
+            });
+
+            // Test initial connection
+            (async () => {
+                try {
+                    await actor.getAllNeeds();
+                    console.log('Successfully connected to the Internet Computer');
+                } catch (e) {
+                    console.error('Failed to connect to the Internet Computer:', e);
+                }
+            })();
+        });
+    </script>
+</body>
+</html>

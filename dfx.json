@@ -1,0 +1,21 @@
+{
+    "version": 1,
+    "networks": {
+        "local": {
+            "bind": "127.0.0.1:8000",
+            "type": "ephemeral"
+        }
+    },
+    "canisters": {
+        "local_support": {
+            "type": "motoko",
+            "main": "LocalSupport.mo",
+            "candid": "local_support.did",
+            "build": "dfx build local_support",
+            "declarations": {
+                "node_compatibility": true,
+                "output": "src/declarations/local_support"
+            }
+        }
+    }
+}
