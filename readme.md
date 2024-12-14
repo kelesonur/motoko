@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ADİİS (Acil Durum İletişim ve İnsani İhtiyaç Sistemi)
 
 ## Overview
